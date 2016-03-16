@@ -1,0 +1,21 @@
+<%= form_for(@slap) do |f| %>
+  <% if @slap.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@slap.errors.count, "error") %> prohibited this slap from being saved:</h2>
+
+      <ul>
+      <% @slap.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :text %><br>
+    <%= f.text_field :text %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Slaps</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%= form_tag("/slaps/", method: "get") do %>
+      <%= label_tag(:slapper_tag, "Slapper:") %>
+      <%= text_field_tag(:slapper) %>
+      <%= label_tag(:victim_tag, "Victim:") %>
+      <%= text_field_tag(:victim) %>
+      <%= submit_tag("Slap!") %>
+    <% end %>
+    <h3><%=@slap%></h3>
+    <% @slaps.each do |slap| %>
+      <tr>
+        <td><%= slap.text %></td>
+        <td><%= link_to 'Show', slap %></td>
+        <td><%= link_to 'Edit', edit_slap_path(slap) %></td>
+        <td><%= link_to 'Destroy', slap, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Slap', new_slap_path %>
